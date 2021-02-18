@@ -15,12 +15,13 @@ app.use(bodyParser.json());
 
 const db = require('./config/keys').mongoURI;
 mongoose
-    .connect(db)
-    .then(() => console.log('MongoDB Connected'))
-    .catch(err => console.log(err));
+  .connect(db)
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
 
 // Middleware Passport
 app.use(passport.initialize());
+// Config Passport
 require('./config/passport')(passport);
 
 app.get('/', (req, res) => res.send('Hello word'));
